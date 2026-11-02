@@ -1,0 +1,156 @@
+{
+  "learners": {
+    "random_forest": {
+      "common": {
+        "bootstrap": true,
+        "criterion": "squared_error",
+        "n_estimators": 360,
+        "n_jobs": 4
+      },
+      "device": "cpu",
+      "grid": {
+        "max_depth": [
+          8,
+          12
+        ],
+        "max_features": [
+          "sqrt",
+          0.25
+        ],
+        "min_samples_leaf": [
+          2,
+          4
+        ]
+      }
+    },
+    "ridge": {
+      "E0_fit_intercept": true,
+      "E1_fit_intercept": false,
+      "alphas": [
+        0.01,
+        0.03,
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "device": "cpu",
+      "direct_fit_intercept": false
+    },
+    "xgboost": {
+      "common": {
+        "colsample_bytree": 0.75,
+        "learning_rate": 0.04,
+        "n_estimators": 360,
+        "n_jobs": 4,
+        "objective": "reg:squarederror",
+        "subsample": 0.85,
+        "tree_method": "hist",
+        "verbosity": 0
+      },
+      "device": "cuda",
+      "grid": {
+        "max_depth": [
+          3,
+          4
+        ],
+        "min_child_weight": [
+          1.0,
+          4.0
+        ],
+        "reg_lambda": [
+          1.5,
+          4.0
+        ]
+      }
+    }
+  },
+  "inner_objective": "component_macro",
+  "outer_component_ids": [
+    "DEP_000",
+    "DEP_001",
+    "DEP_002",
+    "DEP_003",
+    "DEP_004",
+    "DEP_005",
+    "DEP_006",
+    "DEP_007",
+    "DEP_008",
+    "DEP_009",
+    "DEP_010",
+    "DEP_011",
+    "DEP_012",
+    "DEP_013",
+    "DEP_014",
+    "DEP_015",
+    "DEP_016",
+    "DEP_017",
+    "DEP_018",
+    "DEP_019",
+    "DEP_020",
+    "DEP_021",
+    "DEP_022",
+    "DEP_023",
+    "DEP_024",
+    "DEP_025",
+    "DEP_026",
+    "DEP_027",
+    "DEP_028",
+    "DEP_029",
+    "DEP_030",
+    "DEP_031",
+    "DEP_032",
+    "DEP_033",
+    "DEP_034",
+    "DEP_035",
+    "DEP_036",
+    "DEP_037",
+    "DEP_038",
+    "DEP_039",
+    "DEP_040",
+    "DEP_041",
+    "DEP_042",
+    "DEP_043",
+    "DEP_044",
+    "DEP_045",
+    "DEP_046",
+    "DEP_047",
+    "DEP_048",
+    "DEP_049",
+    "DEP_050",
+    "DEP_051",
+    "DEP_052",
+    "DEP_053",
+    "DEP_054",
+    "DEP_055",
+    "DEP_056",
+    "DEP_057",
+    "DEP_058",
+    "DEP_059",
+    "DEP_060",
+    "DEP_061",
+    "DEP_062",
+    "DEP_063",
+    "DEP_064",
+    "DEP_065",
+    "DEP_066",
+    "DEP_067",
+    "DEP_068",
+    "DEP_069",
+    "DEP_070",
+    "DEP_071",
+    "DEP_072",
+    "DEP_073",
+    "DEP_074",
+    "DEP_075",
+    "DEP_076",
+    "DEP_077",
+    "DEP_078",
+    "DEP_079",
+    "DEP_080",
+    "DEP_081"
+  ],
+  "model_seed": 20261017
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "study_scope": {
+    "retained_records": 699,
+    "retained_pairs": 5804,
+    "complete_identity_count": 511,
+    "component_loco_groups_with_pairs": 43,
+    "internal_test_observations": 3450,
+    "internal_unique_test_pairs": 2825,
+    "description": "Corrected-input study underlying the manuscript."
+  },
+  "sources": [
+    {
+      "source_id": "TACK_DC50_retained_snapshot",
+      "provider": "ailab-bio/TACK on Hugging Face",
+      "landing_url": "https://huggingface.co/datasets/ailab-bio/TACK",
+      "fixed_revision": "0ebfb3627cfeee826c3392586d46940402237b11",
+      "fixed_file": "DC50/train-00000-of-00001.parquet",
+      "fixed_url": "https://huggingface.co/datasets/ailab-bio/TACK/resolve/0ebfb3627cfeee826c3392586d46940402237b11/DC50/train-00000-of-00001.parquet",
+      "sha256": "2893ce64fe1d5ad50f6bf97aa63fde9597d11e6a1b388cfe30a7cfc79bb06875",
+      "upstream_rows": 4184,
+      "identity_evidence": "The retained local file matches these fixed source bytes. This content match does not recover the original acquisition event or historical generating commit.",
+      "original_acquisition_revision": "UNKNOWN",
+      "original_acquisition_timestamp": "UNKNOWN",
+      "historical_generating_commit": "UNKNOWN",
+      "access_route": "Reader obtains the exact snapshot directly from the provider under applicable terms, then reconstructs the corrected analysis inputs locally.",
+      "raw_data_mirrored": false,
+      "redistribution_permission": "NOT_ASSERTED; repository software licensing does not grant rights to the upstream dataset or its original sources.",
+      "local_reconstruction": "python code/data_build/reconstruct.py --snapshot /path/to/TACK.parquet --output /private/local/inputs"
+    },
+    {
+      "source_id": "training_structure_repair_drawings",
+      "document_identifiers": ["WO2024183650A1", "WO2024183650A9"],
+      "access_urls": ["https://patents.google.com/patent/WO2024183650A1/en", "https://patents.google.com/patent/WO2024183650A9/en"],
+      "use": "Source-supported repair of seven training identities represented by twelve records; measurements and recorded conditions were not edited.",
+      "distributed_material": "Author graph-edit instructions, opaque row correspondence and resulting identity checks used by local reconstruction; no source drawings or manually transcribed full molecular structures.",
+      "original_source_material_mirrored": false,
+      "source_material_redistribution_permission": "NOT_ASSERTED",
+      "scope_limit": "The complete scope of changes between the patent versions remains unverified."
+    },
+    {
+      "source_id": "BRD4_retrospective_case",
+      "doi": "10.1038/s41467-026-70663-1",
+      "doi_url": "https://doi.org/10.1038/s41467-026-70663-1",
+      "records": 7,
+      "pairs": 21,
+      "use": "Retrospective fixed-model exploratory case; molecular graphs were manually transcribed from Figure 6B and supporting names, not supplied as author machine-readable SMILES.",
+      "access_route": "Obtain source article and supporting information through the publisher, inspect the reported measurements and drawings, and curate locally.",
+      "raw_values_or_full_structures_mirrored": false,
+      "redistribution_permission": "NOT_ASSERTED for the upstream measurements, source artwork or manual full-structure transcriptions."
+    },
+    {
+      "source_id": "RIPK1_retrospective_case",
+      "doi": "10.1021/acs.jmedchem.6c01156",
+      "doi_url": "https://doi.org/10.1021/acs.jmedchem.6c01156",
+      "retained_measurement_version": "Author-accepted manuscript",
+      "retained_measurement_access_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13536971/",
+      "source_family_id": "RIPK1_WO2022120118_FAMILY",
+      "records": 10,
+      "primary_pairs": 42,
+      "secondary_pairs": 45,
+      "use": "Retrospective fixed-model case with manually transcribed and drawing-corrected structures; both layers use the same ten compounds.",
+      "access_route": "Obtain the retained author-accepted version and corresponding drawings, verify local measurements and structure transcription, and construct the case locally.",
+      "raw_values_or_full_structures_mirrored": false,
+      "redistribution_permission": "NOT_ASSERTED",
+      "scope_limit": "Corrected replacement tables and complete equivalence across publication versions have not been established."
+    }
+  ],
+  "access_and_reuse": {
+    "repository_results": "Author-generated aggregate statistics and label-free predictions with opaque join/split identifiers; see docs/result-files.md for exact contents and field definitions.",
+    "row_level_input_labels": "Not mirrored. Readers reconstruct from legitimately obtained source inputs.",
+    "case_reconstruction": "code/external_cases/ supplies source-compound/opaque-ID maps, input schemas, model-cache formation, inference and ensemble code. Source measurements, manual full structures and fitted model files are not supplied; readers obtain and curate source inputs locally and form their model cache. Aggregate results remain inspectable without those inputs.",
+    "license_boundary": "Any repository software license applies only to the covered author materials. Third-party sources and software retain their own terms.",
+    "access_verification": "No new network download was performed during this local preparation; the TACK identity above reuses existing fixed-source evidence."
+  }
+}

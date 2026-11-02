@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+local_data/
+local_outputs/
+downloads/
+*.parquet
+*.pkl
+*.pickle
+*.joblib
+*.docx
+*.pdf
+.DS_Store
+Thumbs.db

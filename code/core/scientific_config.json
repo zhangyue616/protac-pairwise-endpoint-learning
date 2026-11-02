@@ -1,0 +1,180 @@
+{
+  "learners": {
+    "random_forest": {
+      "common": {
+        "bootstrap": true,
+        "criterion": "squared_error",
+        "n_estimators": 360,
+        "n_jobs": 4
+      },
+      "device": "cpu",
+      "grid": {
+        "max_depth": [
+          8,
+          12
+        ],
+        "max_features": [
+          "sqrt",
+          0.25
+        ],
+        "min_samples_leaf": [
+          2,
+          4
+        ]
+      }
+    },
+    "ridge": {
+      "E0_fit_intercept": true,
+      "E1_fit_intercept": false,
+      "alphas": [
+        0.01,
+        0.03,
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0
+      ],
+      "device": "cpu",
+      "direct_fit_intercept": false
+    },
+    "xgboost": {
+      "common": {
+        "colsample_bytree": 0.75,
+        "learning_rate": 0.04,
+        "n_estimators": 360,
+        "n_jobs": 4,
+        "objective": "reg:squarederror",
+        "subsample": 0.85,
+        "tree_method": "hist",
+        "verbosity": 0
+      },
+      "device": "cuda",
+      "grid": {
+        "max_depth": [
+          3,
+          4
+        ],
+        "min_child_weight": [
+          1.0,
+          4.0
+        ],
+        "reg_lambda": [
+          1.5,
+          4.0
+        ]
+      }
+    }
+  },
+  "model_selection": {
+    "calibration": "candidate-specific nonnegative through-origin L1 scale c from inner OOF y/p weighted median",
+    "candidate_count_each_learner": 8,
+    "candidate_oof_prediction": "strictly antisymmetric for direct; endpoint difference for E0/E1",
+    "inner_validation_population": "same both-endpoints-inner-validation compatible pairs for every pipeline",
+    "outer_test_truth_forbidden_in_selection_or_calibration": true,
+    "outer_test_use": "selected candidate refit on all outer-train data; apply its frozen inner-OOF c",
+    "selection_metric": "calibrated inner-OOF pair-weighted MAE",
+    "tie_break": "lexicographically smallest candidate_id within absolute 1e-12"
+  },
+  "splitting": {
+    "algorithm": "retain supplied fixed physical-member identity assignments; no reassignment",
+    "cross_fold_edges": "discard",
+    "endpoint_train_rule": "eligible records whose global identity is in current train identities",
+    "global_group": "identity_hash across every g and context",
+    "inner_algorithm": "retain supplied outer-cell inner identity map",
+    "inner_folds": 3,
+    "inner_seed_formula": "outer_split_seed + 1000 + outer_fold",
+    "model_seeds_paired_by_repeat": [
+      20261017,
+      20261018,
+      20261019
+    ],
+    "outer_algorithm": "retain supplied fixed physical-member outer map",
+    "outer_folds": 5,
+    "outer_split_seeds": [
+      20261007,
+      20261008,
+      20261009
+    ],
+    "repeats": 3,
+    "train_pair_rule": "both endpoint identities in the current train fold",
+    "validation_or_test_pair_rule": "both endpoint identities in the current held-out fold"
+  },
+  "target": {
+    "direct_feature": "fingerprint_j - fingerprint_i",
+    "formula": "pdc50(record_id_j) - pdc50(record_id_i)",
+    "name": "canonical_target_b_minus_a",
+    "prediction_zero_tolerance": 1e-12,
+    "primary_population": "all compatible pairs",
+    "secondary_abs_delta_threshold": 1.0,
+    "secondary_membership": "abs(y) >= 1 - 1e-12; required equal to frozen is_cliff",
+    "secondary_threshold_tolerance": 1e-12,
+    "source_reconciliation": "canonical_target_b_minus_a == -pairs_v0.1.true_delta within 1e-12"
+  },
+  "representation": {
+    "atom_invariants": "default connectivity; not feature invariants",
+    "dense_model_matrix": "float32 dense columns of unfolded IDs; adapters preserve original float64 conversion",
+    "environment_identifiers": "RDKit 32-bit unsigned hashed environment IDs; not collision-free",
+    "include_redundant_environments": false,
+    "include_ring_membership": true,
+    "name": "unfolded_raw_sparse_count",
+    "normalization": "none",
+    "only_nonzero_invariants": false,
+    "radius": 2,
+    "shared_between_arms": true,
+    "unknown_environments": "drop; never expand using heldout or external",
+    "use_bond_types": true,
+    "use_chirality": false,
+    "use_features": false,
+    "vocabulary": "sorted IDs from all eligible records in current training identity scope"
+  },
+  "data": {
+    "block_key": [
+      "normalized_poi_id",
+      "pair_context_hash"
+    ],
+    "blocks_full_eligible": 172,
+    "compatible_pairs": 5804,
+    "eligible_unique_global_identities": 511,
+    "fingerprint": {
+      "decode": "LSB0 bit-k-at-integer-bit-k big-endian hex to float32",
+      "n_bits": 2048,
+      "radius": 2,
+      "type": "stored binary Morgan",
+      "use_chirality": false
+    },
+    "pair_filter": "all rebuilt compatible edges; no score-based or |y| filtering",
+    "record_filter": "fixed 24 record exclusions from accepted 723; all retained records eligible",
+    "records_all": 699,
+    "records_eligible": 699
+  },
+  "external_data": {
+    "compatible_pairs": 21,
+    "compound_ids": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "controls": "compounds 13/14 retained in source universe but not assigned continuous labels or evaluated",
+    "ensemble": "equal weight across all 15 outer final models within learner/pipeline; apply model-specific inner c before average",
+    "records_eligible": 7,
+    "source_doi": "10.1038/s41467-026-70663-1",
+    "training_fraction_note": "CV-model ensemble, approximately 80% identity-training data per member; no additional full-data fit"
+  },
+  "execution": {
+    "versions": {
+      "numpy": "1.26.4",
+      "pandas": "3.0.3",
+      "python": "3.11.15",
+      "rdkit": "2026.03.3",
+      "scikit_learn": "1.9.0",
+      "xgboost": "3.0.1"
+    },
+    "resource_plan": "serial queue; one CUDA learner at a time; estimator and BLAS threads four"
+  }
+}

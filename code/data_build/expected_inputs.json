@@ -1,0 +1,348 @@
+{
+  "schema": "EXPECTED_FINAL_INPUT_IDENTITIES_V1",
+  "records": 699,
+  "compatible_pairs": 5804,
+  "chemical_identities": 511,
+  "fixed_input_identities": {
+    "input_build/data/records_revised.csv": {
+      "sha256": "839D9793ADBD8CF4C3F1949CCAC061B2A4122547EFAA51665F15C259AF91BE18",
+      "bytes": 988075
+    },
+    "input_build/data/pairs_revised.csv": {
+      "sha256": "F567FBD11B0AB7D774D33636C841032A12395628B12F947296F132F5D8DA57F7",
+      "bytes": 4232064
+    },
+    "input_build/data/fingerprints.csv": {
+      "sha256": "718D9F23000AE1BF35C945E361764BBA71F5ADDB759815399B07CC3027A88C1F",
+      "bytes": 410799
+    },
+    "input_build/data/main_raw_sparse_counts.json": {
+      "sha256": "9F63A46F4EC71D016273901D5D099D4D3A3263A9655A91BDD077C7F7EAE47447",
+      "bytes": 4220402
+    },
+    "input_build/data/outer_identity_folds.csv": {
+      "sha256": "A9B8DB5FC058D6A0DF17656704B4DC459C4DB32979B394D20842A46539BC923A",
+      "bytes": 122705
+    },
+    "input_build/config/inner_identity_folds.csv": {
+      "sha256": "331E6095382F9681FFDF78EBDC2E396BAE891BB82612FE416F17061AB0DF2596",
+      "bytes": 502900
+    },
+    "input_build/config/source_inner_identity_folds.csv": {
+      "sha256": "27B9F2A38AB21526947144D769E1CD61DBD3232923C4B9CCA6700D600AEAC8AC",
+      "bytes": 122804
+    },
+    "input_build/data/record_sources.csv": {
+      "sha256": "33337F4582CBBDD8C7E8C1942733ACD837AD944D487C3D0DFB0ED21CAB71F6D6",
+      "bytes": 234736
+    },
+    "input_build/config/vocab_manifest.json": {
+      "sha256": "F71816E1BA18C4FB8EC9D40DE375DF5025D2F06F6DC2D9F3034DB29DBACDFE0A",
+      "bytes": 10233
+    },
+    "input_build/data/vocab/R0_O0_I-1.npz": {
+      "sha256": "7D381D573ABFB0DDDEF07B7E67ADDEAC85283BA8A695801C7300B0A92078D4F0",
+      "bytes": 58411
+    },
+    "input_build/data/vocab/R0_O0_I0.npz": {
+      "sha256": "4D65090BF4BC43AD765D7E431D296C0DE26244488AF4AAC9E341E7BE9ED1355E",
+      "bytes": 41599
+    },
+    "input_build/data/vocab/R0_O0_I1.npz": {
+      "sha256": "392DCB04BE695FED7F0296E89FE6DF9259CDC84BF4F828CE0C69F73E7CE52598",
+      "bytes": 41283
+    },
+    "input_build/data/vocab/R0_O0_I2.npz": {
+      "sha256": "79B6608D5499A42B99D5E710435F92310457081EA493DF1ECA02E8E91B80386E",
+      "bytes": 41399
+    },
+    "input_build/data/vocab/R0_O1_I-1.npz": {
+      "sha256": "DCF47C9C04F8482BDC5578005644622AD7A9B0DD12AD7C0F8EB2AC881BE4C336",
+      "bytes": 58379
+    },
+    "input_build/data/vocab/R0_O1_I0.npz": {
+      "sha256": "991432EBEEC3452DF79C14E10491F0BDAE0B25D34818012D06800613F8950551",
+      "bytes": 41075
+    },
+    "input_build/data/vocab/R0_O1_I1.npz": {
+      "sha256": "112FBAB129D8AB4C26364BF9364555DEEAEDE8FBB84B4105A2C86C47B8624A92",
+      "bytes": 41123
+    },
+    "input_build/data/vocab/R0_O1_I2.npz": {
+      "sha256": "64422888321B44D93BE568B78BB82C2F61CB17BEF57835415239CDB9CDB34B81",
+      "bytes": 42067
+    },
+    "input_build/data/vocab/R0_O2_I-1.npz": {
+      "sha256": "5EE3056B9CF9ED6846E0C852A76CAAA760D24EA58299FBBBB6E7E57C8A97704E",
+      "bytes": 58833
+    },
+    "input_build/data/vocab/R0_O2_I0.npz": {
+      "sha256": "8B96F31FC0FB706E429599CA3F955757A7D8F4EF976606DAB6459DBE6B0D819C",
+      "bytes": 41722
+    },
+    "input_build/data/vocab/R0_O2_I1.npz": {
+      "sha256": "6BFFF6F4D47FF7F66BE500D136D7EA0F5AE757C8CC47B6B20930367DFE487821",
+      "bytes": 41967
+    },
+    "input_build/data/vocab/R0_O2_I2.npz": {
+      "sha256": "2BB95F1C0868E3FD30052F1F320649C7B4CB3CC74830D8F9281435237B88C662",
+      "bytes": 41540
+    },
+    "input_build/data/vocab/R0_O3_I-1.npz": {
+      "sha256": "266C468FEDAE15D26F14361988E4F6D393303D4590F941AAE399F48E4F9BC753",
+      "bytes": 59004
+    },
+    "input_build/data/vocab/R0_O3_I0.npz": {
+      "sha256": "B9499ADE1EBD3D3F33CE2526F5371A0DF32213C498AC39703B53DC971BB5D0F9",
+      "bytes": 42197
+    },
+    "input_build/data/vocab/R0_O3_I1.npz": {
+      "sha256": "70399F06DD6D1DFF432001196113EE094BFA2BB27D0D20CBBB745F28613BCFB7",
+      "bytes": 41323
+    },
+    "input_build/data/vocab/R0_O3_I2.npz": {
+      "sha256": "712DA56545B20307C6EF6F393DCC284EEDC95FED93BAD1986A5BFF6E954130D5",
+      "bytes": 42094
+    },
+    "input_build/data/vocab/R0_O4_I-1.npz": {
+      "sha256": "4E9E07AA3EF3F09ADB9B64A0CF9CAF411C42DE0DCCC9EDBAFF4998FF92C10A40",
+      "bytes": 58876
+    },
+    "input_build/data/vocab/R0_O4_I0.npz": {
+      "sha256": "E317609A9A4E51DE4FD5F3CC552AE5D79F285ECB7D74E99ADE269CFFFE4B33AE",
+      "bytes": 42103
+    },
+    "input_build/data/vocab/R0_O4_I1.npz": {
+      "sha256": "C39C13F73ECE87F17982FE979426877EFD32AEE88478D90F74905E8DFCFF9809",
+      "bytes": 41511
+    },
+    "input_build/data/vocab/R0_O4_I2.npz": {
+      "sha256": "325389E00BAFDC27D00464E46537D21C30963DA42C2E854AC40398A2E54CF423",
+      "bytes": 42188
+    },
+    "input_build/data/vocab/R1_O0_I-1.npz": {
+      "sha256": "808833C42C628C11A90E8D559617F2229F2BCBE756BDE930F5FA2B980522C82E",
+      "bytes": 59010
+    },
+    "input_build/data/vocab/R1_O0_I0.npz": {
+      "sha256": "F23DC6C7A4DB8F59C8263E9B5A4208ADFDF8ED88D7DCCE2385CF53A70EA14248",
+      "bytes": 42149
+    },
+    "input_build/data/vocab/R1_O0_I1.npz": {
+      "sha256": "693B5DD4EB79790591A3004DE38A0D0DE1055D9054561C82B7660343A9D21292",
+      "bytes": 41850
+    },
+    "input_build/data/vocab/R1_O0_I2.npz": {
+      "sha256": "4C005B33A63D86DC086867541F7CC9AE34A68131BBFA64944A193BAD8D112F00",
+      "bytes": 41784
+    },
+    "input_build/data/vocab/R1_O1_I-1.npz": {
+      "sha256": "9ED892C89FD772D434AC32E79EC4478194D80B04C3AEF521DD56858460D4FFD7",
+      "bytes": 58464
+    },
+    "input_build/data/vocab/R1_O1_I0.npz": {
+      "sha256": "7A84F76561A2428E6B585DBDAA0B4C700CEA495D2ACA075B84BF56A9A42CBDCD",
+      "bytes": 41620
+    },
+    "input_build/data/vocab/R1_O1_I1.npz": {
+      "sha256": "9F0C9D7F0B0A8913108445BDB74755555E36EE25771276D6A42EAE4B00C2B979",
+      "bytes": 41275
+    },
+    "input_build/data/vocab/R1_O1_I2.npz": {
+      "sha256": "EA12B53295C47A5D6083D63CC70CFB2C5BBE3E6A4CC020B5F44FDC2D2E49F829",
+      "bytes": 41564
+    },
+    "input_build/data/vocab/R1_O2_I-1.npz": {
+      "sha256": "38FF906C70D0CCB223A774CB1569F2742DF77C00C1CC78202E1150B0A2DF094D",
+      "bytes": 58925
+    },
+    "input_build/data/vocab/R1_O2_I0.npz": {
+      "sha256": "8CF254B0B01116C831CBDB5B5EE2A99BA26D095CD0403F2CB20021EDB91863EF",
+      "bytes": 41498
+    },
+    "input_build/data/vocab/R1_O2_I1.npz": {
+      "sha256": "0BAD72EC9F4716F1032F019E755BA469FA3FE13C00C7FFF42ABF7EC6577BEF66",
+      "bytes": 41790
+    },
+    "input_build/data/vocab/R1_O2_I2.npz": {
+      "sha256": "750514C745EF3AC6651802D5617BF0F9D8916699429E70F2E9AEE9F9A379CDA7",
+      "bytes": 42102
+    },
+    "input_build/data/vocab/R1_O3_I-1.npz": {
+      "sha256": "F2665CF95ABEA009CD667D1E19FEC9E63727CC8E1FD3981B67C07D75FFDBB472",
+      "bytes": 59167
+    },
+    "input_build/data/vocab/R1_O3_I0.npz": {
+      "sha256": "17FA7D0FD737322A232038FFAFACA1E918E71FC86287701CE859DED8063AE2E1",
+      "bytes": 42151
+    },
+    "input_build/data/vocab/R1_O3_I1.npz": {
+      "sha256": "884F4BFCB0243502FED8D2429AB32779F52B1BC5934BE1539AA7AF711F435111",
+      "bytes": 41799
+    },
+    "input_build/data/vocab/R1_O3_I2.npz": {
+      "sha256": "08BE8223AF9F5AB6600A2962649FBF8777EAB091A237C51525EBD5079DAC45CB",
+      "bytes": 41899
+    },
+    "input_build/data/vocab/R1_O4_I-1.npz": {
+      "sha256": "31F2B0D1B50666845E822E2852F0A6BC5D1F1AF38B84B9223DDFEB51A9644F29",
+      "bytes": 58404
+    },
+    "input_build/data/vocab/R1_O4_I0.npz": {
+      "sha256": "03B68F0DA16A86DEA7FB004EDE16EE9128E4CFF4253E0B78D928D11BD30AC2B3",
+      "bytes": 41434
+    },
+    "input_build/data/vocab/R1_O4_I1.npz": {
+      "sha256": "8F9D4A9599ABAAF5198F3C76574D655DFB662E7CD7C0D1B33F220E89C8F8F8C0",
+      "bytes": 41607
+    },
+    "input_build/data/vocab/R1_O4_I2.npz": {
+      "sha256": "1D4DAD43B1596FBF31B5A366072D36148F7B1F4F75CD301E2A1925A8FFB42296",
+      "bytes": 41206
+    },
+    "input_build/data/vocab/R2_O0_I-1.npz": {
+      "sha256": "A83A6C97871B228E0A6C3C2100A7295E5E88075C4AC8221E5F3E9F8A70489DFA",
+      "bytes": 58745
+    },
+    "input_build/data/vocab/R2_O0_I0.npz": {
+      "sha256": "2D545303B397FB5988D60C84A73083AC669999FC2CE0F6ABD23E824863F8522A",
+      "bytes": 41619
+    },
+    "input_build/data/vocab/R2_O0_I1.npz": {
+      "sha256": "7BB6DE595B88131E0868C7692651B0AB339DFD7D2698A60EB32F38A0CDDCA503",
+      "bytes": 41925
+    },
+    "input_build/data/vocab/R2_O0_I2.npz": {
+      "sha256": "80885DD347763AE59891266BC35E0212B7229BE0A320442FF0113C4BB5597002",
+      "bytes": 41634
+    },
+    "input_build/data/vocab/R2_O1_I-1.npz": {
+      "sha256": "8A594E5D0E573F64E32410E94C6A7D1F17A97F1E8DF41CF01CF0AC17C205F1EA",
+      "bytes": 58682
+    },
+    "input_build/data/vocab/R2_O1_I0.npz": {
+      "sha256": "886CE3D1D37C7B21C5F3E6551F5BCDED72F9BCC7EDFAF04924CA069BAAB22049",
+      "bytes": 41628
+    },
+    "input_build/data/vocab/R2_O1_I1.npz": {
+      "sha256": "63D1F6783D97B7E140959DD154DAD361A36241D7C0876749448676AD7653CDDA",
+      "bytes": 41422
+    },
+    "input_build/data/vocab/R2_O1_I2.npz": {
+      "sha256": "2DFD2B36AD945DBEF00FD01BE1174609A53BCA9267C3883D7725168EC638E350",
+      "bytes": 41695
+    },
+    "input_build/data/vocab/R2_O2_I-1.npz": {
+      "sha256": "5B1E5B77726E93536288B3505AFF3C6DE955F4EEB37AC36864F2204515953F7C",
+      "bytes": 58658
+    },
+    "input_build/data/vocab/R2_O2_I0.npz": {
+      "sha256": "6F44E38A384DCBC4EFE34A1794E6192B1260991CA4E1D9B8E2CBD9AF9E4E3752",
+      "bytes": 40932
+    },
+    "input_build/data/vocab/R2_O2_I1.npz": {
+      "sha256": "5FFC12F731A4232BC3206131348A850C536D32587196CA13C9C23438A0773838",
+      "bytes": 41917
+    },
+    "input_build/data/vocab/R2_O2_I2.npz": {
+      "sha256": "BAC70FC07E78AE4CF9EDCE28C3576ED4F13300C8F720E0FEF1F803FBD24F3206",
+      "bytes": 41985
+    },
+    "input_build/data/vocab/R2_O3_I-1.npz": {
+      "sha256": "5E5D14AF87ACC47361FCFAC49A54D0236CE7B836B4DD88CC6FA9EDFB53FAC612",
+      "bytes": 58851
+    },
+    "input_build/data/vocab/R2_O3_I0.npz": {
+      "sha256": "0699500B7A792D19DA5690E32795CAAD52CDC41D5809591747B359FBB48F8E34",
+      "bytes": 41417
+    },
+    "input_build/data/vocab/R2_O3_I1.npz": {
+      "sha256": "497D7D13A72C79B00B1875AB7360BC7441C147BD2FD1655334A661360960611E",
+      "bytes": 41888
+    },
+    "input_build/data/vocab/R2_O3_I2.npz": {
+      "sha256": "9D5221405E17FA6635E69D487296C599928B85C2939B7529E50ADEC84EFE0147",
+      "bytes": 42179
+    },
+    "input_build/data/vocab/R2_O4_I-1.npz": {
+      "sha256": "A51ADD267030B0D6B02C9F76DFB5AF0056012374845A185DD85F174B6F72733B",
+      "bytes": 58967
+    },
+    "input_build/data/vocab/R2_O4_I0.npz": {
+      "sha256": "CD803A57E918DB575C97137FB56E6634C4C98C5875FCB9F5BCAB6DAF0B3FC2F3",
+      "bytes": 41919
+    },
+    "input_build/data/vocab/R2_O4_I1.npz": {
+      "sha256": "517BD2AD01251DE79A5FEB198019D8FF0B73987D2C85EA1BE415D1E248827FC3",
+      "bytes": 41696
+    },
+    "input_build/data/vocab/R2_O4_I2.npz": {
+      "sha256": "B511132453AF13E3CF9D377413856CF935AA4025395B4FC7B53C6197D72EE258",
+      "bytes": 41836
+    },
+    "entry.py": {
+      "sha256": "372A12F1EE8862879A860C9F7127F55F07410F5DA66587E875C27A3DE58F4E77",
+      "bytes": 7433
+    },
+    "contract.py": {
+      "sha256": "FE39CC2EE8354401DBD4E75B9A0CA12661E4E1BCE4B1E924D0B25D5B4FE0293E",
+      "bytes": 11604
+    },
+    "run_queue.py": {
+      "sha256": "2E624A0121A4D23265FCE19EA25E6C2B035E8C23CA194D576E012CD2741DA49E",
+      "bytes": 1922
+    },
+    "SCIENTIFIC_INVARIANTS.json": {
+      "sha256": "D0EAB3BCB316855F339E7AB0B80937910D946617185598F5EF90BFA7690C7A02",
+      "bytes": 4328
+    },
+    "engine/run_binary.py": {
+      "sha256": "F74149220F099BA6DF88E5BE8ADABFCEFDFD1798CE9065C73BC2E769634B7C73",
+      "bytes": 32370
+    },
+    "engine/run_count.py": {
+      "sha256": "A6FBE67403FC7A9D0BFC4619A7792D8E29588426D111F12A4CF55477F8048104",
+      "bytes": 33829
+    },
+    "engine/model_adapters.py": {
+      "sha256": "DD3C4BC243956FDFB3BF2AECEACB5FB9F092085CD7991CC7AA5A02F4E2F0D5AF",
+      "bytes": 16202
+    },
+    "engine/count_features.py": {
+      "sha256": "12A2FC8F7C2C6D7D56C4C29E74475FE72B8FF87028D8D0F5F2FFA27BF19464F1",
+      "bytes": 6971
+    },
+    "engine/run_source.py": {
+      "sha256": "5239D44DB5BA37020ACD549B358DECCC26FB502A33B3CA799E4924F48C16F73E",
+      "bytes": 7977
+    },
+    "input_build/config/selected_sources.json": {
+      "sha256": "F6FDA71714709D75F0E88F03BD3FF9FE65E7B3D83A3B5337F457300B7EA75B24",
+      "bytes": 1614
+    },
+    "protocol/EXECUTION_PROTOCOL.md": {
+      "sha256": "FEE88AF1A7C6C02EF04F5DCD38B90F9B7921DE3F135C51454D1784AB421103BB",
+      "bytes": 33256
+    },
+    "old_exploratory_case/CASE_SCOPE.json": {
+      "sha256": "79742DE49FFF6B32A6F87E788C3727A7537BB7EF28F03680C31A18473BD621F8",
+      "bytes": 491
+    },
+    "old_exploratory_case/records.csv": {
+      "sha256": "A62863CCF48349BAE122B83B43FDA35CB2AF40E7BE82FCFCDEE99AA813E4F56F",
+      "bytes": 6259
+    },
+    "old_exploratory_case/pairs.csv": {
+      "sha256": "1624047CC0F23899C4D7A32674077579C2E12E063A54F3FF58EC9665361C7123",
+      "bytes": 6042
+    },
+    "old_exploratory_case/fingerprints.csv": {
+      "sha256": "32B2027A8A7AA2A9F3FD66E386410AD7C298080FD944FC5811442FA63E92FF90",
+      "bytes": 3683
+    },
+    "old_exploratory_case/raw_sparse_counts.json": {
+      "sha256": "3341E64795BB66385B29BDF2D61B21956FF3945E5D819810819850539110D99B",
+      "bytes": 37326
+    }
+  }
+}

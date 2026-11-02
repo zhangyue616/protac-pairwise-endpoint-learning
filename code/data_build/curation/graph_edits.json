@@ -1,0 +1,164 @@
+{
+  "index_convention": "RDKit atom order of the exact original downloaded SMILES string",
+  "rules": [
+    {
+      "example": 1,
+      "raw_indices": [
+        3274,
+        3275
+      ],
+      "before_identity_hash": "05D9FCDDD4FC3BF0158B2002E054DE70E6B29D6DE2F6C28C9EA2E6EF0CD5F76D",
+      "after_identity_hash": "5B59DF75433DD7917C1F67C2D86EBC72B7D96E8E0D309E1F26278B7524388666",
+      "bridgeheads_source_atom_indices_0_based": [
+        47,
+        50
+      ],
+      "bridgehead_absolute_CIP": [
+        "R",
+        "R"
+      ],
+      "add_bridge": {
+        "element": "C",
+        "single_bonds_to_each_bridgehead": true
+      },
+      "N_methyl_site": null,
+      "CIP_assignment": "rdkit"
+    },
+    {
+      "example": 17,
+      "raw_indices": [
+        4170,
+        4171
+      ],
+      "before_identity_hash": "609C968A86B7C194442F09A5E3C80C084FB7D4D24FCC7386A268B6CB6F03B9A5",
+      "after_identity_hash": "B7B8984C88970838922F67A7234A80C657820B95096396F2E835F3A3B504D3BF",
+      "bridgeheads_source_atom_indices_0_based": [
+        38,
+        41
+      ],
+      "bridgehead_absolute_CIP": [
+        "R",
+        "R"
+      ],
+      "add_bridge": {
+        "element": "C",
+        "single_bonds_to_each_bridgehead": true
+      },
+      "N_methyl_site": 8,
+      "CIP_assignment": "rdCIPLabeler"
+    },
+    {
+      "example": 20,
+      "raw_indices": [
+        3284,
+        3285
+      ],
+      "before_identity_hash": "4E748172C221EDA34369FDA1DB92E85D8C83204D4CD21CF55ED6D34C0157F710",
+      "after_identity_hash": "0B3A99C7571BC8F8A9676CC2EBB78879274B39BDCACC2E359BAC7B6EA7064ED4",
+      "bridgeheads_source_atom_indices_0_based": [
+        49,
+        52
+      ],
+      "bridgehead_absolute_CIP": [
+        "R",
+        "R"
+      ],
+      "add_bridge": {
+        "element": "C",
+        "single_bonds_to_each_bridgehead": true
+      },
+      "N_methyl_site": null,
+      "CIP_assignment": "rdCIPLabeler"
+    },
+    {
+      "example": 36,
+      "raw_indices": [
+        3288,
+        3289
+      ],
+      "before_identity_hash": "0A31498D5E1818DF6DDF999482EFC715D84AAAD86E00B87121CB626DB7639136",
+      "after_identity_hash": "5AA58966D3DFD95D46FC0F4E52A13D991C4EC9CC811BA16B7C0CA5DBCF20C7EA",
+      "bridgeheads_source_atom_indices_0_based": [
+        49,
+        52
+      ],
+      "bridgehead_absolute_CIP": [
+        "R",
+        "R"
+      ],
+      "add_bridge": {
+        "element": "C",
+        "single_bonds_to_each_bridgehead": true
+      },
+      "N_methyl_site": null,
+      "CIP_assignment": "rdCIPLabeler"
+    },
+    {
+      "example": 39,
+      "raw_indices": [
+        3257
+      ],
+      "before_identity_hash": "5D699AD01737C638177DAE085E82CABA0DD22E8453B47B92DCC2854F0E766F6E",
+      "after_identity_hash": "1D3919B25A504E9E504BF2241D3E9AE66BCAF6513DD2878332C50F6A5C9E649B",
+      "bridgeheads_source_atom_indices_0_based": [
+        49,
+        52
+      ],
+      "bridgehead_absolute_CIP": [
+        "R",
+        "R"
+      ],
+      "add_bridge": {
+        "element": "C",
+        "single_bonds_to_each_bridgehead": true
+      },
+      "N_methyl_site": null,
+      "CIP_assignment": "rdkit"
+    },
+    {
+      "example": 56,
+      "raw_indices": [
+        3204,
+        3205
+      ],
+      "before_identity_hash": "97D29C1CFBE3CE1CD410DD0C39F64FA4E508F535831646BAA7385B50083976D8",
+      "after_identity_hash": "45651FBC47C36F1C09099E7A343E7DFFF7D485FD5DB0A069B4E9A63E03D603A6",
+      "bridgeheads_source_atom_indices_0_based": [
+        52,
+        55
+      ],
+      "bridgehead_absolute_CIP": [
+        "R",
+        "R"
+      ],
+      "add_bridge": {
+        "element": "C",
+        "single_bonds_to_each_bridgehead": true
+      },
+      "N_methyl_site": null,
+      "CIP_assignment": "rdkit"
+    },
+    {
+      "example": 61,
+      "raw_indices": [
+        3252
+      ],
+      "before_identity_hash": "40BA420965BCCFF1AAD90C3101A9D9A6E03BB73B30D4F709875B79EB1048347D",
+      "after_identity_hash": "BDE3EBFD20F746463CE7973CC9C0CAF680459DCC8CBAF8A5295934E93038FEB2",
+      "bridgeheads_source_atom_indices_0_based": [
+        50,
+        53
+      ],
+      "bridgehead_absolute_CIP": [
+        "R",
+        "R"
+      ],
+      "add_bridge": {
+        "element": "C",
+        "single_bonds_to_each_bridgehead": true
+      },
+      "N_methyl_site": null,
+      "CIP_assignment": "rdkit"
+    }
+  ]
+}
