@@ -1,6 +1,6 @@
 ## Fixed identity and source sensitivity analyses
 
-These modules implement the fixed identity cross-validation and three retained source-holdout sensitivity analyses. They preserve the original model, feature, candidate-grid, calibration and prediction definitions. The main source-component analysis and its component-macro training objective are in `../source_components/` and use the unchanged `inner_objective.py` helper supplied here.
+These modules implement the identity cross-validation and the three source-holdout sensitivity analyses, keeping the original model, feature, candidate-grid, calibration, and prediction definitions. The main source-component analysis and its component-macro training objective are in `../source_components/` and use the same `inner_objective.py` helper supplied here.
 
 Prepare the inputs with `../data_build/reconstruct.py`. The resulting manifest binds each private input file to its SHA-256. Inspection does not fit or import model code:
 
@@ -16,14 +16,14 @@ python code/core/portable.py run-fold --manifest ../protac-inputs/inputs.json --
 
 Choose `count` for the unfolded Morgan count representation. Supported pipelines are `direct_pair`, `endpoint_E0`, `endpoint_E1`, `endpoint_E0_matched`, and tree-only `context_pair_C1`. This sensitivity analysis selects and calibrates candidates using pair-pooled inner-OOF MAE. It does not substitute that objective for the main component-macro analysis.
 
-The three retained source holdouts use binary features and their fixed source-inner assignments:
+The three source-holdout analyses use binary features and their predefined source-inner assignments:
 
 ```sh
 python code/core/portable.py run-source --manifest ../protac-inputs/inputs.json --learner ridge --output ../protac-runs/source-ridge
 ```
 
-The published wrapper requires the recorded scientific versions in `scientific_config.json`; XGBoost training requires CUDA and refuses CPU fallback. It accepts only a new output directory, so checkpoint state from another input configuration cannot be silently reused. Internal engine files retain their original direct-execution guards; invoke `portable.py`.
+The wrapper requires the scientific versions recorded in `scientific_config.json`; XGBoost training requires CUDA and refuses CPU fallback. It accepts only a new output directory, so checkpoint state from another input configuration cannot be silently reused. Internal engine files keep their original direct-execution guards, so invoke `portable.py`.
 
-`run-fold` writes `INPUT_BINDING.json`, a fit ledger, and `results/{learner}_R{repeat}/outer_{fold}/{pipeline}/`. That directory contains candidate OOF arrays, `selection.json`, final fitted-model metadata and `outer_predictions.csv`. Raw and calibrated predictions remain separate. This entry runs the internal sensitivity analysis only; it does not generate the external seven-compound case-study predictions.
+`run-fold` writes `INPUT_BINDING.json`, a fit ledger, and `results/{learner}_R{repeat}/outer_{fold}/{pipeline}/`, which contains candidate OOF arrays, `selection.json`, final fitted-model metadata, and `outer_predictions.csv`. Raw and calibrated predictions are stored separately. This entry point runs only the internal sensitivity analysis and does not generate the external seven-compound case-study predictions.
 
-The release preparation checked syntax, command help, input inspection, a pure calibration case and the fixed-snapshot reconstruction. It did not rerun model training or establish a fresh end-to-end model reproduction.
+Checks during repository packaging covered syntax, command help, input inspection, a pure calibration case, and reconstruction from the specified snapshot. Model training was not rerun, and no fresh end-to-end model reproduction was performed.
