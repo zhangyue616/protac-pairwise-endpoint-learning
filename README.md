@@ -20,8 +20,17 @@ Figure 1 appears in the main article and shows the shared signed-pair target, th
 | `code/external_cases/` | BRD4/RIPK1 compound and pair mappings, fixed-model inference and ensemble point estimates |
 | `results/` | 69 aggregate/resampling files and 8 compressed prediction tables, without source measurements or structures |
 | `data/` | Source access and input requirements |
+| `verify_release.py` | Standard-library integrity check over the released payload, curation checksums and declared populations |
 
 The [result-file guide](docs/result-files.md) identifies the analyses represented by the supplied tables. The main article and Supporting Information describe the methods and scientific interpretation.
+
+[verify_release.py](verify_release.py) re-checks this release with no download, no model package and no GPU:
+
+```sh
+python verify_release.py
+```
+
+It compares every payload's byte size, row count and column list against [result_manifest.json](results/result_manifest.json), recomputes the curation checksums recorded in [index_manifest.json](code/data_build/curation/index_manifest.json), requires the record/pair/identity/component populations to agree across all four manifests, confirms that the declared-removed and potency-label columns are absent and that the compressed payloads carry a zero gzip timestamp, and checks every released prediction row against the published pair and record indices for endpoint direction and identity keys. Add `--snapshot /path/to/TACK.parquet` to also verify the source snapshot's SHA-256. The check fits no model and computes no prediction.
 
 ## Setup and data preparation
 
@@ -53,6 +62,12 @@ The supplied aggregate results can be inspected directly. Reproducing a calculat
 ## Interpretation
 
 All comparisons use the definitions and populations stated in the article. The source-component units are operational source/shared-identity groups and do not guarantee complete independence between publications, patent families, or chemical series. The external cases are retrospective single-source checks. The Ridge objective sensitivity is posthoc, and the slope intervals are conditional on saved predictions. These analyses do not establish a universal ranking of learning strategies or prospective clinical or experimental performance.
+
+## Citation
+
+Cite the accompanying article, *Predicting PROTAC Potency Differences: A Comparison of Pairwise and Endpoint Learning*. [CITATION.cff](CITATION.cff) holds the machine-readable metadata that GitHub's "Cite this repository" control and reference managers read.
+
+Archived release: `10.5281/zenodo.PENDING` — replace with the DOI minted for the tagged release. Cite that release rather than `main`: the archived tag preserves the state the article refers to, while `main` can move afterwards.
 
 ## License and source terms
 

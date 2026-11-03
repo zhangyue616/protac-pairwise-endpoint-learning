@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: >-
+  If you use this repository, cite the accompanying article. To reference a
+  specific state of the code and results, also cite the archived release.
+title: "Predicting PROTAC Potency Differences: code and analysis results"
+abstract: >-
+  Author-written code and author-generated aggregate results for a comparison
+  of direct prediction of signed PROTAC potency differences against the
+  subtraction of two endpoint predictions, over 699 records, 511 molecular
+  identities and 5,804 compatible pairs, under identity-based and
+  source-component holdout.
+type: software
+authors:
+  - family-names: Zhang
+    given-names: Yue
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+    # affiliation: ""
+  # Add every co-author of the article here, in the article's byline order,
+  # then uncomment and fill the orcid and affiliation lines above.
+repository-code: "https://github.com/zhangyue616/protac-pairwise-endpoint-learning"
+license: MIT
+version: 1.0.0
+date-released: "2026-11-03"
+keywords:
+  - PROTAC
+  - targeted protein degradation
+  - potency difference prediction
+  - pairwise learning
+  - cheminformatics
+# Uncomment once the tagged release is archived and a DOI is minted:
+# identifiers:
+#   - type: doi
+#     value: "10.5281/zenodo.0000000"
+#     description: Archived release of this repository
+preferred-citation:
+  type: article
+  title: >-
+    Predicting PROTAC Potency Differences: A Comparison of Pairwise and
+    Endpoint Learning
+  authors:
+    - family-names: Zhang
+      given-names: Yue
+    # Mirror the full byline from the authors list above.
+  year: 2026
+  # journal: ""
+  # doi: ""
