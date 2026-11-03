@@ -15,10 +15,15 @@ def masks(bundle,source,s):
  return rtrain,ptrain,ptest,unseen_i,unseen_j
 
 def metrics(y,p):
- nonzero=np.abs(y)>1e-12
- predicted_zero=np.abs(p)<=1e-12
- sign_right=(np.sign(p)==np.sign(y))&~predicted_zero
- return dict(n=len(y),mae=float(np.mean(np.abs(y-p))),rmse=float(np.sqrt(np.mean((y-p)**2))),direction_nonzero_truth_n=int(nonzero.sum()),direction_accuracy_strict=float(np.mean(sign_right[nonzero])) if nonzero.any() else None,direction_accuracy_zero_half=float(np.mean(np.where(predicted_zero,.5,sign_right)[nonzero])) if nonzero.any() else None,predicted_zero_n=int(predicted_zero.sum()),true_zero_n=int((~nonzero).sum()))
+ # One definition shared with the external-case statistics: only exact true ties
+ # leave the direction denominator, and a near-zero nonzero truth fails closed
+ # instead of being reclassified as a tie. Key names match the reported tables.
+ if not (np.isfinite(y).all() and np.isfinite(p).all()):raise RuntimeError('nonfinite metric input')
+ if ((np.abs(y)<=1e-12)&(y!=0)).any():raise RuntimeError('near-zero nonzero truth requires explicit direction policy resolution')
+ nonzero=y!=0
+ predicted_zero=np.abs(p[nonzero])<=1e-12
+ sign_right=(np.sign(y[nonzero])==np.sign(p[nonzero]))&~predicted_zero
+ return dict(n=len(y),n_direction=int(nonzero.sum()),mae=float(np.mean(np.abs(y-p))),rmse=float(np.sqrt(np.mean((y-p)**2))),DA_strict=float(sign_right.mean()) if nonzero.any() else None,DA_half=float(np.mean(sign_right.astype(float)+0.5*predicted_zero)) if nonzero.any() else None,zero_predictions=int((np.abs(p)<=1e-12).sum()),true_ties_excluded=int((~nonzero).sum()))
 
 def run(learner,cfg,b,spec,source,root,inner_path):
  global ROOT

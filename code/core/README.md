@@ -22,6 +22,8 @@ The three source-holdout analyses use binary features and their predefined sourc
 python code/core/portable.py run-source --manifest ../protac-inputs/inputs.json --learner ridge --output ../protac-runs/source-ridge
 ```
 
+Their reported metrics use the single definition shared with the external cases: MAE and RMSE over every test observation, strict directional accuracy and the half-credit zero-prediction score over the observations whose true difference is not an exact tie, and a near-zero nonzero truth stops execution rather than entering the tie count. The emitted keys are `n`, `n_direction`, `mae`, `rmse`, `DA_strict`, `DA_half`, `zero_predictions` and `true_ties_excluded`, matching the reported source-holdout table.
+
 The wrapper requires the scientific versions recorded in `scientific_config.json`; XGBoost training must report CUDA ordinal 0 and refuses CPU fallback or another ordinal. Before any fit, `run-fold` requires the outer identity map to be an exact five-fold cover of the eligible identities and the inner map to cover exactly the outer-training identities in three folds. It accepts only a new output directory, so checkpoint state from another input configuration cannot be silently reused. Internal engine files keep their original direct-execution guards, so invoke `portable.py`.
 
 `run-fold` writes `INPUT_BINDING.json`, a fit ledger, and `results/{learner}_R{repeat}/outer_{fold}/{pipeline}/`, which contains candidate OOF arrays, `selection.json`, final fitted-model metadata, and `outer_predictions.csv`. Raw and calibrated predictions are stored separately. This entry point runs only the internal sensitivity analysis and does not generate the external seven-compound case-study predictions.
