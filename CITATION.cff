@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: >-
   If you use this repository, cite the accompanying article. To reference a
-  specific state of the code and results, also cite the archived release.
+  specific state of the code and results, cite the commit it refers to.
 title: "Predicting PROTAC Potency Differences: code and analysis results"
 abstract: >-
   Author-written code and author-generated aggregate results for a comparison

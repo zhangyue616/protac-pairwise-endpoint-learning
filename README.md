@@ -67,7 +67,7 @@ All comparisons use the definitions and populations stated in the article. The s
 
 Cite the accompanying article, *Predicting PROTAC Potency Differences: A Comparison of Pairwise and Endpoint Learning*. [CITATION.cff](CITATION.cff) holds the machine-readable metadata that GitHub's "Cite this repository" control and reference managers read.
 
-Archived release: `10.5281/zenodo.PENDING` — replace with the DOI minted for the tagged release. Cite that release rather than `main`: the archived tag preserves the state the article refers to, while `main` can move afterwards.
+Cite the specific commit the article refers to rather than `main`, which moves as the repository is updated.
 
 ## License and source terms
 
