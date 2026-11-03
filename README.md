@@ -18,6 +18,7 @@ Figure 1 appears in the main article and shows the shared signed-pair target, th
 | `code/objective_sensitivity/` | Fixed Ridge sensitivity to inner selection/calibration objectives |
 | `code/fixed_prediction_diagnostics/` | Conditional slope intervals from saved predictions |
 | `code/external_cases/` | BRD4/RIPK1 compound and pair mappings, fixed-model inference and ensemble point estimates |
+| `code/aggregation/` | Original author aggregation scripts and their input and provenance limitations |
 | `results/` | 69 aggregate/resampling files and 8 compressed prediction tables, without source measurements or structures |
 | `data/` | Source access and input requirements |
 | `verify_release.py` | Standard-library integrity check over the released payload, curation checksums and declared populations |
@@ -42,7 +43,7 @@ python -m venv ../protac-env
 python -m pip install -r requirements.txt
 ```
 
-XGBoost training requires a compatible NVIDIA CUDA device, as the model implementation rejects CPU fallback. Input reconstruction and inspection do not require model fitting.
+XGBoost training requires a compatible NVIDIA CUDA device, as the model implementation rejects CPU fallback. Input reconstruction and inspection do not require model fitting. A fresh environment installation, the complete model-training study and end-to-end external-case inference were not re-executed for this release.
 
 The upstream TACK DC50 snapshot is obtained from its original host and is not mirrored here. Source records, measured activities, and manually transcribed molecular structures are subject to their original terms. See [data access](data/README.md) for the specified source, local reconstruction route, and remaining input limitations.
 
