@@ -26,4 +26,6 @@ The wrapper requires the scientific versions recorded in `scientific_config.json
 
 `run-fold` writes `INPUT_BINDING.json`, a fit ledger, and `results/{learner}_R{repeat}/outer_{fold}/{pipeline}/`, which contains candidate OOF arrays, `selection.json`, final fitted-model metadata, and `outer_predictions.csv`. Raw and calibrated predictions are stored separately. This entry point runs only the internal sensitivity analysis and does not generate the external seven-compound case-study predictions.
 
+The final model's authoritative location is the `model_path` value in each cell's `final/unit_complete.json`; downstream external-case loading follows that pointer. Binary and count runs use different default model directories, so use this metadata rather than assuming a shared directory.
+
 Checks during repository packaging covered syntax, command help, input inspection, a pure calibration case, and reconstruction from the specified snapshot. Model training was not rerun, and no fresh end-to-end model reproduction was performed.

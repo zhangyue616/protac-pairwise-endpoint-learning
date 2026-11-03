@@ -16,7 +16,7 @@ The top-level manifest accepts paths relative to its own directory:
 
     {
       "internal_manifest": "internal.json",
-      "loco_manifest": "component_cache_manifest.json"
+      "loco_manifest": "components.json"
     }
 
 The normalized internal manifest has `data_dir` and `jobs`. Each job contains `learner`, `representation`, `pipeline`, `repeat`, `outer_fold`, and `cell_path`, pointing to the core output's `results/ridge_RN/outer_F/PIPELINE` directory. A legacy reader option also accepts explicit `candidate_root`, `queue_root`, and `component_map` paths for saved production caches. No historical machine root is built into the code.
@@ -30,3 +30,5 @@ To rescore and replay caches without fitting or new prediction:
     python code/objective_sensitivity/run_sensitivity.py --manifest LOCAL_MANIFEST.json --output-dir NEW_EMPTY_OUTPUT --score-only
 
 Omit `--score-only` to execute changed-alpha outer fits after the replay gate and produce full summaries. New output must be empty. All objectives and representations use identical test populations; internal repeated absolute errors are averaged per pair before unique-pair/component aggregation. Native-observation and pre-frozen common-pair readouts are also included. This analysis does not identify a causal effect of source isolation, demonstrate equivalence, or provide prospective external validation.
+
+Full summaries also write `PAIR_MEAN_ABSOLUTE_ERRORS.csv` locally, with mean absolute errors per pair, component, domain, representation, pipeline, and objective, plus observation counts. This row-level derived-error table is not included in the public result payload.

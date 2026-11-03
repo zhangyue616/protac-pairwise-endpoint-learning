@@ -38,13 +38,14 @@ def bundle(base, new, mapper):
     r = pd.read_csv(d / 'records_revised.csv').sort_values('record_id', kind='mergesort').reset_index(drop=True)
     p = pd.read_csv(d / 'pairs_revised.csv').sort_values('pair_id', kind='mergesort').reset_index(drop=True)
     g = pd.read_csv(d / 'record_source_group_map.csv').set_index('record_id').component_id.to_dict()
-    im = pd.read_csv(c / 'inner_component_folds.csv'); vm = js(c / 'vocab_manifest.json')
-    folds = im[im.outer_group_id.eq(HELDOUT_COMPONENT)].set_index('component_id').inner_fold.astype(int).to_dict()
     rids = r.record_id.tolist(); ix = {rid: i for i, rid in enumerate(rids)}
     require(len(r) == len(ix) == 699 and r.primary_pair_eligible.all(), 'Record population/eligibility changed')
     ii = np.array([ix[x] for x in p.record_id_i], np.int64); jj = np.array([ix[x] for x in p.record_id_j], np.int64)
     rg = np.array([g[x] for x in rids]); pg = rg[ii]
     require(np.array_equal(pg, rg[jj]) and len(np.unique(pg)) == 43, 'Pair components differ')
+    require(np.any(pg == HELDOUT_COMPONENT), 'Component has no eligible test pairs')
+    im = pd.read_csv(c / 'inner_component_folds.csv'); vm = js(c / 'vocab_manifest.json')
+    folds = im[im.outer_group_id.eq(HELDOUT_COMPONENT)].set_index('component_id').inner_fold.astype(int).to_dict()
     rf = np.array([folds.get(x, -1) for x in rg], np.int64)
     require(np.all((rf < 0) == (rg == HELDOUT_COMPONENT)) and set(rf) == {-1, 0, 1, 2}, 'Inner assignment incomplete')
     z = r.pdc50_median.to_numpy(np.float64); y = z[jj] - z[ii]
@@ -132,7 +133,7 @@ def candidate_grid(cfg: dict[str, Any], learner: str) -> list[dict[str, Any]]:
         raise RuntimeError("candidate count must be eight")
     return rows
 
-def predict_pipeline(model: Any, pipeline: str, bundle: DataBundle, indices: np.ndarray) -> np.ndarray:
+def predict_pipeline(model: Any, pipeline: str, bundle: SimpleNamespace, indices: np.ndarray) -> np.ndarray:
     if pipeline == "direct_pair":
         d = bundle.X_diff[indices]
         p = 0.5 * (predict_model(model, d) - predict_model(model, -d))

@@ -390,7 +390,7 @@ def fit_unit(*, learner: str, pipeline: str, params: dict[str, Any], seed: int,
         atomic_model(final_model_path, model)
         info["model_path"] = final_model_path.as_posix()
     atomic_json(done, {**info, "completed_at_utc": now_utc()})
-    # A complete unit no longer needs its temporary model; outer models live in models/.
+    # A complete unit no longer needs its temporary model; the retained path is recorded in model_path.
     for path in unit.glob("*.joblib"):
         path.unlink()
     return prediction, info, ext
