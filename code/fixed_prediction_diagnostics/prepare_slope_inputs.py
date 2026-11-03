@@ -22,13 +22,14 @@ def main():
     if not np.isfinite(labels.to_numpy()).all():
         raise ValueError('Nonfinite reconstructed canonical label')
     prepared=[]
-    for protocol,filename,component,expected_n,expected_k in [
-        ('internal','S06_outer_predictions_long.csv.gz','dependency_component',3450,38),
-        ('loco','S29_all_corrected_source_predictions.csv.gz','heldout_component_id',5804,43),
+    # Same parsers as the study's long tables: default for internal rows, exact for source-component rows.
+    for protocol,filename,component,expected_n,expected_k,parser in [
+        ('internal','S06_outer_predictions_long.csv.gz','dependency_component',3450,38,None),
+        ('loco','S29_all_corrected_source_predictions.csv.gz','heldout_component_id',5804,43,'round_trip'),
     ]:
-        frame=pd.read_csv(repo/'results/predictions/current_companion'/filename)
+        frame=pd.read_csv(repo/'results/predictions/current_companion'/filename,float_precision=parser)
         frame=frame.loc[frame.learner.eq('xgboost') & frame.pipeline.eq('endpoint_E1')].copy()
-        frame['true_delta']=frame.pair_id.map(labels)
+        frame['true_delta']=frame.pair_id.map(pd.read_csv(args.pairs,float_precision=parser).set_index('pair_id').canonical_target_b_minus_a)
         for representation in ('binary','count'):
             selected=frame.loc[frame.representation.eq(representation)]
             if len(selected)!=expected_n or selected[component].nunique()!=expected_k:
@@ -41,7 +42,7 @@ def main():
                 if not np.array_equal(frame[endpoint].to_numpy(str),frame.pair_id.map(authority).to_numpy(str)):
                     raise ValueError('Prediction endpoint direction differs from reconstructed pair authority')
         prepared.append((protocol,frame[['representation','true_delta','calibrated_prediction',component]]))
-    baseline=pd.read_csv(repo/'results/conditional_slopes/FOUR_SLOPE_TABLE.csv')
+    baseline=pd.read_csv(repo/'results/conditional_slopes/FOUR_SLOPE_TABLE.csv',float_precision='round_trip')
     if len(baseline)!=4 or set(zip(baseline.protocol,baseline.representation))!={(p,r) for p in ('internal','loco') for r in ('binary','count')}:
         raise ValueError('Incomplete frozen four-slope baseline')
     (out/'inputs').mkdir(parents=True,exist_ok=True)

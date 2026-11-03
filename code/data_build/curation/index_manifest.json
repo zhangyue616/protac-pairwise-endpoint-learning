@@ -10,6 +10,6 @@
     "selected_sources.json": "CDE111FB9BD144B54134612F483E099663FD2D4E51231E310BD76410060E89A3",
     "source_inner_identity_folds.csv": "6921BDFC5B1373BF12A477DA8A70B638BAEEDA766B3C33E2B41AF2EEE9433314"
   },
-  "contains": "author-generated IDs, input row indices, fixed group/split assignments and graph-edit operations",
-  "does_not_contain": "source SMILES, manual complete structures, source measurements or source free text"
+  "contains": "author-generated IDs, source references (DOI, PMID, patent number or title), input row indices, fixed group/split assignments and graph-edit operations",
+  "does_not_contain": "source SMILES, manual complete structures or source measurements"
 }

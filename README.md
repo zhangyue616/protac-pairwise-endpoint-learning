@@ -18,7 +18,7 @@ Figure 1 appears in the main article and shows the shared signed-pair target, th
 | `code/objective_sensitivity/` | Fixed Ridge sensitivity to inner selection/calibration objectives |
 | `code/fixed_prediction_diagnostics/` | Conditional slope intervals from saved predictions |
 | `code/external_cases/` | BRD4/RIPK1 compound and pair mappings, fixed-model inference and ensemble point estimates |
-| `code/aggregation/` | Original author aggregation scripts and their input and provenance limitations |
+| `code/aggregation/` | Archived aggregation scripts, a reader replay from saved predictions, and a comparison tool |
 | `results/` | 69 aggregate/resampling files and 8 compressed prediction tables, without source measurements or structures |
 | `data/` | Source access and input requirements |
 | `verify_release.py` | Standard-library integrity check over the released payload, curation checksums and declared populations |
@@ -31,11 +31,11 @@ The [result-file guide](docs/result-files.md) identifies the analyses represente
 python verify_release.py
 ```
 
-It compares every payload's byte size, row count and column list against [result_manifest.json](results/result_manifest.json), recomputes the curation checksums recorded in [index_manifest.json](code/data_build/curation/index_manifest.json), requires the record/pair/identity/component populations to agree across all four manifests, confirms that the declared-removed and potency-label columns are absent and that the compressed payloads carry a zero gzip timestamp, and checks every released prediction row against the published pair and record indices for endpoint direction and identity keys. Add `--snapshot /path/to/TACK.parquet` to also verify the source snapshot's SHA-256. The check fits no model and computes no prediction.
+It compares every payload's byte size, row count and column list against [result_manifest.json](results/result_manifest.json), recomputes the curation checksums recorded in [index_manifest.json](code/data_build/curation/index_manifest.json), requires the record, pair and identity populations to agree across the curation indices and three manifests, and the component population across the indices and two manifests, confirms that the declared-removed and potency-label columns are absent and that the compressed payloads carry a zero gzip timestamp, and checks every released prediction row's pair ID against the published indices, and endpoint direction and identity keys wherever a file carries those columns. Add `--snapshot /path/to/TACK.parquet` to also verify the source snapshot's SHA-256. The check fits no model and computes no prediction.
 
 ## Setup and data preparation
 
-Use Python 3.11.15 in an isolated environment. The recorded scientific package versions are in [requirements.txt](requirements.txt) and [scientific_config.json](code/core/scientific_config.json). From the repository root:
+Use Python 3.11.15 in an isolated environment; the checks reported below used an Anaconda build on Windows and `uv venv --python 3.11.15 --managed-python --seed ../protac-env` on Ubuntu. The recorded scientific package versions are in [requirements.txt](requirements.txt) and [scientific_config.json](code/core/scientific_config.json). From the repository root:
 
 ```sh
 python -m venv ../protac-env
@@ -43,7 +43,7 @@ python -m venv ../protac-env
 python -m pip install -r requirements.txt
 ```
 
-XGBoost training requires a compatible NVIDIA CUDA device, as the model implementation rejects CPU fallback. Input reconstruction and inspection do not require model fitting. A fresh environment installation, the complete model-training study and end-to-end external-case inference were not re-executed for this release.
+XGBoost training requires a compatible NVIDIA CUDA device, as the model implementation rejects CPU fallback. Input reconstruction and inspection do not require model fitting. A fresh installation of the pinned packages in a new virtual environment and the no-fit table replay were checked on the same computer on Ubuntu 24.04.2 LTS under WSL2 (x86-64), using uv-managed Python 3.11.15: 7/28 files were byte-identical, and the remaining 21 differed by at most `4.2327252813834093e-16`, within the absolute tolerance of `1e-12`. The complete model-training study and end-to-end external-case inference were not re-executed for this release.
 
 The upstream TACK DC50 snapshot is obtained from its original host and is not mirrored here. Source records, measured activities, and manually transcribed molecular structures are subject to their original terms. See [data access](data/README.md) for the specified source, local reconstruction route, and remaining input limitations.
 
@@ -56,9 +56,11 @@ python code/data_build/reconstruct.py --snapshot ../TACK_DC50.parquet --output .
 python code/core/portable.py inspect --manifest ../protac-inputs/inputs.json
 ```
 
-The [reconstruction instructions](code/data_build/README.md) document the source identity and the checked 699-record / 5,804-pair input population. Continue with the [source-component analysis](code/source_components/README.md), [identity/source sensitivity analyses](code/core/README.md), [Ridge objective sensitivity](code/objective_sensitivity/README.md), or [fixed-prediction slope diagnostics](code/fixed_prediction_diagnostics/README.md); the slope-diagnostics route joins the supplied prediction files to locally reconstructed labels and requires no model training. The [external-case instructions](code/external_cases/README.md) provide source compound/opaque ID mappings, local input schemas, model-cache formation routes, and inference and ensemble calculations. Readers must curate the complete case structures and measurements locally; fitted model files are not supplied.
+The [reconstruction instructions](code/data_build/README.md) document the source identity and the checked 699-record / 5,804-pair input population. Continue with the [source-component analysis](code/source_components/README.md), [identity/source sensitivity analyses](code/core/README.md), [Ridge objective sensitivity](code/objective_sensitivity/README.md), or [fixed-prediction slope diagnostics](code/fixed_prediction_diagnostics/README.md); the slope-diagnostics route joins the supplied prediction files to locally reconstructed labels and requires no model training. The [external-case instructions](code/external_cases/README.md) provide source compound/opaque ID mappings, local input schemas, model-cache formation routes, and inference and ensemble calculations. New inference requires locally curated complete case structures and locally fitted models, which are not supplied; recomputing the case metrics from the released member predictions requires only locally curated measurements.
 
 The supplied aggregate results can be inspected directly. Reproducing a calculation requires the corresponding source inputs, predefined assignments, and, where indicated, saved prediction caches.
+
+The [table replay](code/aggregation/README.md) rebuilds labels from the TACK snapshot and recomputes 19 aggregation tables and nine conditional-slope files from the released predictions, without fitting any model. These files supply main Tables 1–4. On Windows 11 x86-64 all 28 were byte-identical to the released files; `compare_replay.py` checks them at an absolute tolerance of `1e-12`. Main Table 5 additionally needs ten reader-curated DC50 values.
 
 ## Interpretation
 

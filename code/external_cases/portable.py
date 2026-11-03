@@ -23,7 +23,7 @@ def read_json(path):
 
 
 def table(path):
-    with Path(path).open(encoding='utf-8', newline='') as handle:
+    with Path(path).open(encoding='utf-8-sig', newline='') as handle:
         return list(csv.DictReader(handle))
 
 

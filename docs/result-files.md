@@ -16,7 +16,9 @@ The repository contains author-generated aggregate statistics, component-resampl
 
 The eight ordinary `.csv.gz` files contain raw and calibrated model outputs, calibration scales, and the opaque row/member/split identifiers needed for local joins. Source endpoint measurements, true pair differences, molecular structures, similarities, source text, and pair-level losses are omitted. The primary RIPK1 flag records the predefined evaluation layer. Decompression exactly restores the selected-column CSV bytes; gzip headers use timestamp zero.
 
-Labels for the main analysis can be reconstructed locally from the specified upstream TACK snapshot using [the data-building route](../data/README.md). The BRD4 and RIPK1 inputs additionally require lawful access to the stated sources and local curation of their measurements and full structures. Opaque identifiers facilitate alignment without supplying those source inputs. Model-output inspection needs no source labels; recomputing error, direction accuracy, and OLS slopes does.
+Labels for the main analysis can be reconstructed locally from the specified upstream TACK snapshot using [the data-building route](../data/README.md). Recomputing BRD4 and RIPK1 metrics requires lawful access to the stated sources and local curation of their DC50 values; new inference also requires their full structures. Opaque identifiers facilitate alignment without supplying those source inputs. Model-output inspection needs no source labels; recomputing error, direction accuracy, and OLS slopes does.
+
+`code/aggregation/pair_strata.csv` supplies, by pair ID, the `time_status` and `any_approximate_label` columns removed from the S06 predictions. `time_status` is `same_recorded_fixed_time`, `common_reported_time_window` or `recorded_context_time_unknown`; `any_approximate_label` is False for every pair.
 
 ## Payload index
 

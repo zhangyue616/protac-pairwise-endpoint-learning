@@ -1,11 +1,13 @@
 """Reconstruct the final curated main-analysis inputs from the fixed TACK snapshot.
 
 Download the source separately. The repository supplies only author-generated
-row/ID membership, fixed assignments and previously adopted local graph edits.
+row/ID membership, source references, fixed assignments and previously adopted
+local graph edits.
 No source SMILES, complete corrected structures or measurements are embedded.
 """
 from __future__ import annotations
 
+import io
 import argparse
 from argparse import Namespace
 import hashlib
@@ -136,6 +138,8 @@ def main():
         fingerprints.append({'record_id': member.record_id, 'fp_hex': format(integer, '0512X'),
                              'popcount': len(bits)})
     records = pd.DataFrame(records).sort_values('record_id', kind='mergesort').reset_index(drop=True)
+    # The study's input build read pDC50 back through the pandas 3.0 default CSV parser before forming pairs.
+    records['pdc50_median'] = pd.read_csv(io.StringIO(records[['pdc50_median']].to_csv(index=False))).pdc50_median
     by_id = records.set_index('record_id')
     listed = {frozenset((x.record_id_i,x.record_id_j)): x for x in pair_index.itertuples(index=False)}
     if len(listed) != 5804:

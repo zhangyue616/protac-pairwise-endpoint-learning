@@ -3,7 +3,11 @@ from pathlib import Path
 import csv
 import json
 import math
+import os
 import sys
+
+# Trailing digits of the weighted dot products depend on the OpenBLAS kernel; a value set in the shell wins.
+os.environ.setdefault("OPENBLAS_CORETYPE", "Nehalem")
 
 import numpy as np
 
@@ -150,8 +154,8 @@ def main():
                     invalid_reasons[reason] = invalid_reasons.get(reason, 0) + 1
             results.append({"protocol": protocol, "representation": representation,
                             "observations": len(x), "components": expected_k,
-                            "point_estimate": point, "interval_low": low, "interval_high": high,
-                            "display_point_3sig": display_three_significant(point),
+                            "point_estimate": reproduced, "interval_low": low, "interval_high": high,
+                            "display_point_3sig": display_three_significant(reproduced),
                             "display_interval_3sig": [display_three_significant(low), display_three_significant(high)],
                             "requested_draws": DRAWS, "valid_draws": len(finite),
                             "invalid_draws": DRAWS - len(finite), "invalid_reasons": invalid_reasons})
