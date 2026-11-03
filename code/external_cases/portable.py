@@ -187,12 +187,12 @@ def infer(args):
         ripk1_statistics.validate_model(model, member)
         if member['learner'] == 'xgboost':
             device, _ = model_adapters._xgboost_config_device(model)
-            require(device is not None and device.startswith('cuda'), 'XGBoost requires retained CUDA device; no CPU fallback')
+            require(device in ('cuda', 'cuda:0'), 'XGBoost requires retained CUDA ordinal 0; no CPU fallback or other ordinal')
         runner = binary if member['representation'] == 'binary' else count
         raw = runner.predict_pipeline(model, member['strategy'], current, np.arange(len(base.pairs)))
         if member['learner'] == 'xgboost':
             device, _ = model_adapters._xgboost_config_device(model)
-            require(device is not None and device.startswith('cuda'), 'XGBoost fell back from CUDA')
+            require(device in ('cuda', 'cuda:0'), 'XGBoost fell back from CUDA ordinal 0')
         calibrated = member['scale_c'] * raw
         require(np.isfinite(calibrated).all(), 'nonfinite calibrated prediction')
         for i, pair in base.pairs.iterrows():

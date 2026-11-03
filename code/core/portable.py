@@ -83,6 +83,12 @@ def run_fold(args, manifest, cfg):
     inner = inner.loc[inner['repeat'].eq(args.repeat) & inner.outer_fold.eq(args.fold)]
     outer_map = dict(zip(outer.identity_hash, outer.outer_fold))
     inner_map = dict(zip(inner.identity_hash, inner.inner_fold))
+    identities = set(bundle.records.identity_hash)
+    if set(outer_map) != identities or set(outer_map.values()) != set(range(5)):
+        raise ValueError('outer identity map is not an exact five-fold cover of the eligible identities')
+    outer_train = {identity for identity, assigned in outer_map.items() if assigned != args.fold}
+    if set(inner_map) != outer_train or set(inner_map.values()) != {0, 1, 2}:
+        raise ValueError('inner identity map is not the exact outer-train scope')
     cell = runner.ROOT / 'results' / f'{args.learner}_R{args.repeat}' / f'outer_{args.fold}'
     ledger_path = runner.ROOT / 'logs' / 'fits.jsonl'
     ledger = runner.FitLedger(ledger_path, {'representation': args.representation,

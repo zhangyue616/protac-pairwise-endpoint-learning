@@ -226,6 +226,9 @@ class InternalBranch:
             vocab, training_ids = values["environment_ids"].copy(), values["training_record_ids"].copy()
         require(np.array_equal(training_ids, self.records.loc[record_train, "record_id"].to_numpy(str)), "outer count vocabulary training scope mismatch")
         require(vocab.ndim == 1 and len(np.unique(vocab)) == len(vocab), "invalid outer count vocabulary")
+        require(vocab.tolist() == sorted({environment for record_id in training_ids
+                                          for environment in self._raw_counts[record_id]}),
+                "outer count vocabulary is not the training-only environment union")
         # Same float32 mapping, original vocabulary order, and drop-unknown rule
         # as frozen count_features.map_counts; no new environment is inserted.
         columns = {int(key): column for column, key in enumerate(vocab)}

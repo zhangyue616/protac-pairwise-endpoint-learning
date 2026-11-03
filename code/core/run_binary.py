@@ -238,8 +238,8 @@ def fit_checkpoint(*, path: Path, ledger: FitLedger, context: dict[str, Any],
         else:
             model, receipt = fit_model(learner, params, X, y, seed,
                                        "cuda" if learner == "xgboost" else "cpu")
-        if learner == "xgboost" and not str(receipt.get("actual_device", "")).startswith("cuda"):
-            raise RuntimeError(f"XGBoost CUDA request fell back: {receipt.get('actual_device')}")
+        if learner == "xgboost" and str(receipt.get("actual_device", "")) not in ("cuda", "cuda:0"):
+            raise RuntimeError(f"XGBoost CPU fallback or non-zero CUDA ordinal: {receipt.get('actual_device')}")
         prediction = predict_model(model, X) if save_prediction else None
         if retain_model:
             atomic_model(model_path, model)

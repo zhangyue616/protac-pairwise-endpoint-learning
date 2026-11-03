@@ -43,7 +43,7 @@ For local error calculations, create a separate UTF-8 CSV with exactly `compound
 
 ## Model cache and inference
 
-Use the exact scientific environment in `../core/scientific_config.json`. The inference path calls the unchanged shared `run_binary.predict_pipeline`, `run_count.predict_pipeline`, `count_features`, and model adapters. It preserves antisymmetrization, difference/sum column order, endpoint subtraction, and model-specific calibration. XGBoost must use the recorded CUDA device; the wrapper refuses a CPU model or device fallback. Ridge and random forest use their recorded CPU configurations.
+Use the exact scientific environment in `../core/scientific_config.json`. The inference path calls the unchanged shared `run_binary.predict_pipeline`, `run_count.predict_pipeline`, `count_features`, and model adapters. It preserves antisymmetrization, difference/sum column order, endpoint subtraction, and model-specific calibration. XGBoost must report the recorded CUDA ordinal 0; the wrapper refuses a CPU model, a device fallback, or another ordinal. Ridge and random forest use their recorded CPU configurations.
 
 There are two explicit cache contracts:
 
