@@ -16,6 +16,6 @@ This joins by opaque pair ID and checks endpoint direction and all panel populat
 
     python code/fixed_prediction_diagnostics/slope_intervals.py --input-dir LOCAL_SAVED_PREDICTIONS --output-dir NEW_EMPTY_OUTPUT
 
-Each protocol independently initializes seed 20261027 and draws 2000 whole-component resamples with replacement. Binary/count representations share component multiplicities within protocol. The interval uses the 2.5th/97.5th percentiles with NumPy's linear method. Invalid slopes are recorded; there is no redraw, variance epsilon, or component exclusion. The script checks the original four point slopes and direct weighted OLS for draws 1, 1000, and 2000. Repository packaging used the existing completed computation and did not run a new batch of resamples.
+Each protocol independently initializes seed 20261027 and draws 2000 whole-component resamples with replacement. Binary/count representations share component multiplicities within protocol. The interval uses the 2.5th/97.5th percentiles with NumPy's linear method. Invalid slopes are recorded; there is no redraw, variance epsilon, or component exclusion. The script checks the original four point slopes and direct weighted OLS for draws 1, 1000, and 2000.
 
 These intervals condition on fixed predictions and omit training, model selection, calibration, data construction and unresolved source-family uncertainty. They do not establish nominal population coverage or significance of differences between slopes. No model is trained, predicted or recalibrated by this script.

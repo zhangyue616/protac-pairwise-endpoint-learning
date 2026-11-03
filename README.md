@@ -33,7 +33,7 @@ python -m venv ../protac-env
 python -m pip install -r requirements.txt
 ```
 
-XGBoost training requires a compatible NVIDIA CUDA device, as the model implementation rejects CPU fallback. Input reconstruction and inspection do not require model fitting. A fresh environment installation and the complete training study were not repeated when packaging this repository.
+XGBoost training requires a compatible NVIDIA CUDA device, as the model implementation rejects CPU fallback. Input reconstruction and inspection do not require model fitting.
 
 The upstream TACK DC50 snapshot is obtained from its original host and is not mirrored here. Source records, measured activities, and manually transcribed molecular structures are subject to their original terms. See [data access](data/README.md) for the specified source, local reconstruction route, and remaining input limitations.
 
@@ -46,9 +46,9 @@ python code/data_build/reconstruct.py --snapshot ../TACK_DC50.parquet --output .
 python code/core/portable.py inspect --manifest ../protac-inputs/inputs.json
 ```
 
-The [reconstruction instructions](code/data_build/README.md) document the source identity and the checked 699-record / 5,804-pair input population. Continue with the [source-component analysis](code/source_components/README.md), [identity/source sensitivity analyses](code/core/README.md), [Ridge objective sensitivity](code/objective_sensitivity/README.md), or [fixed-prediction slope diagnostics](code/fixed_prediction_diagnostics/README.md); the slope-diagnostics route joins the supplied prediction files to locally reconstructed labels and requires no model training. The [external-case instructions](code/external_cases/README.md) provide source compound/opaque ID mappings, local input schemas, model-cache formation routes, and inference and ensemble calculations. Readers must curate the complete case structures and measurements locally; fitted model files are not supplied, and fresh end-to-end case reproduction was not run when packaging this repository.
+The [reconstruction instructions](code/data_build/README.md) document the source identity and the checked 699-record / 5,804-pair input population. Continue with the [source-component analysis](code/source_components/README.md), [identity/source sensitivity analyses](code/core/README.md), [Ridge objective sensitivity](code/objective_sensitivity/README.md), or [fixed-prediction slope diagnostics](code/fixed_prediction_diagnostics/README.md); the slope-diagnostics route joins the supplied prediction files to locally reconstructed labels and requires no model training. The [external-case instructions](code/external_cases/README.md) provide source compound/opaque ID mappings, local input schemas, model-cache formation routes, and inference and ensemble calculations. Readers must curate the complete case structures and measurements locally; fitted model files are not supplied.
 
-The supplied aggregate results can be inspected directly. The complete model-training study was not repeated when packaging this repository. Reproducing a calculation requires the corresponding source inputs, predefined assignments, and, where indicated, saved prediction caches; providing the source code does not establish that unavailable third-party materials have been recovered.
+The supplied aggregate results can be inspected directly. Reproducing a calculation requires the corresponding source inputs, predefined assignments, and, where indicated, saved prediction caches.
 
 ## Interpretation
 

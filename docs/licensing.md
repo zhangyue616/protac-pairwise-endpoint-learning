@@ -8,4 +8,4 @@ Readers obtain source data from the named upstream providers and apply the suppl
 
 Figure 1 is the authors' study overview from the main article and is supplied for inspection of this work. Its inclusion does not grant redistribution rights to the underlying external molecular data.
 
-The data-access guide describes each source and any version or availability limitations. A repository snapshot or successful software check does not resolve missing source history, unavailable replacement tables, or cross-version correspondence that the article identifies as unknown.
+The data-access guide describes each source and any version or availability limitations. This repository does not resolve the missing source history, the unavailable replacement tables, or the cross-version correspondence that the article identifies as unknown.

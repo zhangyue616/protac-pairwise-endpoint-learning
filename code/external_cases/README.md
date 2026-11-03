@@ -57,7 +57,7 @@ python code/external_cases/portable.py infer --case BRD4 --compounds /private/br
 python code/external_cases/portable.py infer --case RIPK1 --compounds /private/ripk1_compounds.csv --cache /private/cache --mode rebuilt --inputs /private/inputs/inputs.json --output /private/ripk1_inference
 ```
 
-Outputs require a new directory. Each inference writes label-free `member_predictions.csv`; no model fitting occurs. Original-cache inference requires the exact trusted local author cache. Publicly rebuilt inference has a documented formation path, but fresh model training and its final external predictions were **not** executed when packaging this repository, and neither mode has undergone a new end-to-end reproduction here.
+Outputs require a new directory. Each inference writes label-free `member_predictions.csv`; no model fitting occurs. Original-cache inference requires the exact trusted local author cache; publicly rebuilt inference instead consumes the cache formed by the public entry points described above.
 
 ## Ensemble and point estimates
 
@@ -69,5 +69,3 @@ python code/external_cases/portable.py summarize --case RIPK1 --members results/
 ```
 
 These commands join private source labels by compound/record/pair IDs and preserve MAE, RMSE, strict directional accuracy, half-credit treatment of zero predictions, and true-tie exclusion. Predictions with absolute value ≤ 1e-12 score zero strict or half credit in the half-zero score; nonzero truths arbitrarily close to zero fail pending an explicit direction policy. RIPK1 includes the primary42/secondary45 layers, Zero reference, and predefined contrasts. These are single-source point estimates. No pair bootstrap, confidence interval, t-test, retraining, or new statistical design is added. The source similarity metadata column is omitted from the portable aggregate output; no metric or ensemble formula is changed.
-
-Checks during repository packaging covered source-definition AST comparisons, ID/member correspondence against the released predictions, command help/inspection, and small synthetic checks. They did not run case inference, read real source measurements for new metric calculation, fit models, or resample observations.

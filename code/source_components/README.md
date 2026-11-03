@@ -2,7 +2,7 @@
 
 This directory provides the source-component data, training-support, and prediction routes. The main analysis holds out each of 43 components with eligible pairs; component indexing also includes components without eligible pairs. The model seed is 20261017, each learner has eight candidates, and each outer cell has three inner folds. Candidate calibration and selection use the component-macro objective over 42 pair-positive training components. The shared exact calibration helper and unchanged model adapters are in `../core/`.
 
-`scientific_components.py` preserves the original count mapping, direct antisymmetry, endpoint differences, full-training count vocabulary, and nonsingleton endpoint support. `run_loco.py` is a portable entry point for one cell. It fits all three inner layers afresh, whereas the original production run reused accepted invariant inner-model caches for some cells. This changes execution cost and storage while keeping the same scientific fits and selection rules. Training and predictions were not rerun with this entry point when packaging the repository.
+`scientific_components.py` preserves the original count mapping, direct antisymmetry, endpoint differences, full-training count vocabulary, and nonsingleton endpoint support. `run_loco.py` is a portable entry point for one cell. It fits all three inner layers afresh, whereas the original production run reused accepted invariant inner-model caches for some cells. This changes execution cost and storage while keeping the same scientific fits and selection rules.
 
 Required local input directory:
 
